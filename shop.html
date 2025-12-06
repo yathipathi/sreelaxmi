@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SREE LAXMI OFFSET PRINTERS - Printing Order Calculator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+    }
+
+    legend {
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      padding: 6px;
+      width: 100%;
+      max-width: 260px;
+      box-sizing: border-box;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 6px;
+      text-align: center;
+    }
+
+    th {
+      background: #eaeaea;
+    }
+
+    .amount-display {
+      background: #eaffd8;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 7px 13px;
+      border: none;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .save-btn {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .clear-btn {
+      background: red;
+      color: white;
+    }
+
+    .wa-btn {
+      background: #25D366;
+      color: white;
+    }
+
+    .delete-btn {
+      background: #ff4757;
+      color: white;
+    }
+
+    .total-box {
+      text-align: right;
+      font-size: 20px;
+      margin-top: 15px;
+      font-weight: bold;
+      background: #e6ffe6;
+      padding: 12px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>💠 SREE LAXMI OFFSET PRINTERS 💠</h1>
+    <h2>Order Billing & Calculation System</h2>
+    <br>
+
+    <label><b>Customer Name:</b></label>
+    <input type="text" id="customerName">
+
+    <br><br>
+
+    <label><b>Customer WhatsApp Number:</b></label>
+    <input type="text" id="customerWhatsapp" placeholder="Enter 10 digit mobile">
+
+    <br><br>
+
+    <!-- ================= Sections ================= -->
+
+    <fieldset>
+      <legend>Namuna Ballot</legend>
+      <select id="namunaCopies">
+        <option value="0">Select</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+        <option value="500">500</option>
+        <option value="600">600</option>
+        <option value="700">700</option>
+        <option value="800">800</option>
+        <option value="900">900</option>
+        <option value="1000">1000</option>
+      </select>
+      <input type="text" id="namunaAmount" readonly class="amount-display">
+    </fieldset>
+
+    <fieldset>
+      <legend>Namuna Ballot 4 & 5</legend>
+      <select id="namuna45Copies">
+        <option value="0">Select</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+        <option value="500">500</option>
+        <option value="600">600</option>
+        <option value="700">700</option>
+        <option value="800">800</option>
+        <option value="900">900</option>
+        <option value="1000">1000</option>
+      </select>
+      <input type="text" id="namuna45Amount" readonly class="amount-display">
+    </fieldset>
+
+    <fieldset>
+      <legend>Handslips</legend>
+      <select id="handslipCopies">
+        <option value="0">Select</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+        <option value="500">500</option>
+        <option value="600">600</option>
+        <option value="700">700</option>
+        <option value="800">800</option>
+        <option value="900">900</option>
+        <option value="1000">1000</option>
+      </select>
+      <input type="text" id="handslipAmount" readonly class="amount-display">
+    </fieldset>
+
+    <fieldset>
+      <legend>Posters</legend>
+      <select id="posterCopies">
+        <option value="0">Select</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+        <option value="500">500</option>
+        <option value="600">600</option>
+        <option value="700">700</option>
+        <option value="800">800</option>
+        <option value="900">900</option>
+        <option value="1000">1000</option>
+      </select>
+      <input type="text" id="posterAmount" readonly class="amount-display">
+    </fieldset>
+
+    <fieldset>
+      <legend>Stickers (₹50 Each)</legend>
+      <input type="number" id="stickerCopies" placeholder="Enter quantity" min="0">
+      <input type="text" id="stickerAmount" readonly class="amount-display">
+    </fieldset>
+
+    <fieldset>
+      <legend>Kanduvulu (₹15 Each)</legend>
+      <input type="number" id="kanduvalCopies" placeholder="Enter quantity" min="0">
+      <input type="text" id="kanduvalAmount" readonly class="amount-display">
+    </fieldset>
+
+    <fieldset>
+      <legend>Jenda (₹20 Each)</legend>
+      <input type="number" id="jendaCopies" placeholder="Enter quantity" min="0">
+      <input type="text" id="jendaAmount" readonly class="amount-display">
+    </fieldset>
+
+    <fieldset>
+      <legend>Badges (₹5 Each)</legend>
+      <input type="number" id="badgeCopies" placeholder="Enter quantity" min="0">
+      <input type="text" id="badgeAmount" readonly class="amount-display">
+    </fieldset>
+
+    <!-- ================= TOTAL ================= -->
+
+    <div class="total-box">
+      Total Amount: ₹ <span id="grandTotal">0</span>
+    </div>
+
+    <!-- BUTTONS -->
+
+    <button class="clear-btn" onclick="clearForm()">Clear</button>
+    <button class="save-btn" onclick="saveEntry()">Save</button>
+    <button class="wa-btn" onclick="sendWhatsApp()">Send WhatsApp Bill</button>
+
+    <br><br>
+
+    <h2>📌 Saved Bills - SREE LAXMI OFFSET PRINTERS</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="savedTable"></tbody>
+    </table>
+
+  </div>
+
+  <script>
+    let count = 0;
+    const shopNumber = "9912879943";
+
+    const price = {
+      0: 0, 100: 350, 200: 450, 300: 550, 400: 650,
+      500: 750, 600: 850, 700: 950, 800: 1050, 900: 1150, 1000: 1250
+    };
+    const posterPrice = {
+      0: 0, 100: 450, 200: 700, 300: 800, 400: 1000,
+      500: 1200, 600: 1400, 700: 1600, 800: 1800, 900: 2000, 1000: 2200
+    };
+
+    function updateTotals() {
+      const namunaCopies = document.getElementById('namunaCopies').value || "0";
+      const namuna45Copies = document.getElementById('namuna45Copies').value || "0";
+      const handslipCopies = document.getElementById('handslipCopies').value || "0";
+      const posterCopies = document.getElementById('posterCopies').value || "0";
+      const stickerQty = Number(document.getElementById('stickerCopies').value || 0);
+      const kanduvalQty = Number(document.getElementById('kanduvalCopies').value || 0);
+      const jendaQty = Number(document.getElementById('jendaCopies').value || 0);
+      const badgeQty = Number(document.getElementById('badgeCopies').value || 0);
+
+      const n = Number(price[namunaCopies]) || 0;
+      const n45 = Number(price[namuna45Copies]) || 0;
+      const h = Number(price[handslipCopies]) || 0;
+      const p = Number(posterPrice[posterCopies]) || 0;
+      const s = stickerQty * 50;
+      const k = kanduvalQty * 15;
+      const j = jendaQty * 20;
+      const b = badgeQty * 5;
+
+      document.getElementById('namunaAmount').value = n || "";
+      document.getElementById('namuna45Amount').value = n45 || "";
+      document.getElementById('handslipAmount').value = h || "";
+      document.getElementById('posterAmount').value = p || "";
+      document.getElementById('stickerAmount').value = s || "";
+      document.getElementById('kanduvalAmount').value = k || "";
+      document.getElementById('jendaAmount').value = j || "";
+      document.getElementById('badgeAmount').value = b || "";
+
+      const total = n + n45 + h + p + s + k + j + b;
+      document.getElementById('grandTotal').textContent = total;
+    }
+
+    // Live update on all inputs/selects
+    document.querySelectorAll("input,select")
+      .forEach(el => el.addEventListener("input", updateTotals));
+
+    // also update on change for selects (safer for some browsers)
+    document.querySelectorAll("select")
+      .forEach(el => el.addEventListener("change", updateTotals));
+
+    function clearForm() {
+      document.querySelectorAll("input,select").forEach(el => {
+        if (el.tagName.toLowerCase() === 'select') {
+          el.value = "0";
+        } else if (el.type === "number" || el.type === "text") {
+          el.value = "";
+        }
+      });
+      document.getElementById('grandTotal').textContent = "0";
+    }
+
+    function deleteRow(btn) {
+      btn.parentElement.parentElement.remove();
+    }
+
+    function saveEntry() {
+      updateTotals();
+      const total = document.getElementById('grandTotal').textContent;
+      const name = document.getElementById('customerName').value || "-";
+
+      if (parseInt(total) === 0) {
+        alert("No amount to save.");
+        return;
+      }
+
+      count++;
+      const row = `
+    <tr>
+      <td>${count}</td>
+      <td>${name}</td>
+      <td>₹${total}</td>
+      <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+  `;
+      document.getElementById('savedTable').insertAdjacentHTML('beforeend', row);
+      clearForm();
+    }
+
+    function sendWhatsApp() {
+      updateTotals();
+
+      const name = document.getElementById('customerName').value || "-";
+      let num = document.getElementById('customerWhatsapp').value.replace(/\D/g, "");
+      if (num.length === 10) num = "91" + num;
+      // if user already entered with 0 or +91, handled by replace and length checks
+
+      if (!num) {
+        alert("Please enter customer WhatsApp number.");
+        return;
+      }
+
+      const namunaAmount = document.getElementById('namunaAmount').value || 0;
+      const namuna45Amount = document.getElementById('namuna45Amount').value || 0;
+      const handslipAmount = document.getElementById('handslipAmount').value || 0;
+      const posterAmount = document.getElementById('posterAmount').value || 0;
+      const stickerAmount = document.getElementById('stickerAmount').value || 0;
+      const kanduvalAmount = document.getElementById('kanduvalAmount').value || 0;
+      const jendaAmount = document.getElementById('jendaAmount').value || 0;
+      const badgeAmount = document.getElementById('badgeAmount').value || 0;
+      const total = document.getElementById('grandTotal').textContent || 0;
+
+      let msg =
+        `💠 SREE LAXMI OFFSET PRINTERS 💠
+
+Customer: ${name}
+
+Namuna Ballot: ₹${namunaAmount}
+Namuna Ballot 4 & 5: ₹${namuna45Amount}
+Handslips: ₹${handslipAmount}
+Posters: ₹${posterAmount}
+Stickers: ₹${stickerAmount}
+Kanduvulu: ₹${kanduvalAmount}
+Jenda: ₹${jendaAmount}
+Badges: ₹${badgeAmount}
+
+Total: ₹${total}
+
+📞 Contact: ${shopNumber}
+Thank You 🙏`;
+
+      const url = `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+
+</html>
